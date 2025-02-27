@@ -27,13 +27,23 @@ from sklearn.ensemble import ExtraTreesRegressor, RandomForestClassifier
 from sklearn.metrics import r2_score
 from sklearn.manifold import TSNE
 from utils import get_feats, check_for_nulls
+from sklearn.model_selection import GridSearchCV
 
 DATA_FOLDER = 'data/'
 FIGURE_FOLDER = 'img/'
 RESULT_FOLDER = 'results/'
 
-train=get_feats(mode='TRAIN')
-test=get_feats(mode='TEST')
+# train=get_feats(mode='TRAIN')
+# test=get_feats(mode='TEST')
+# NEW STUFF START
+train_file = 'data/train-edited.csv'
+test_file = 'data/test-edited.csv'
+
+# Load the train and test datasets using pandas
+train = pd.read_csv(train_file)
+test = pd.read_csv(test_file)
+
+#NEW STUFF END
 sub = pd.read_excel('data/SAMPLE_SUBMISSION.xlsx')
 y = pd.read_excel(f"data/TRAIN/TRAINING_SOLUTIONS.xlsx")
 
@@ -58,7 +68,8 @@ plt.clf()
 
 log_features = [f for f in features if (train[f] >= 0).all() and scipy.stats.skew(train[f]) > 0]
 
-X_train, X_test, y_train, y_test = train_test_split(train.drop(targets,axis=1), y[targets], test_size=0.30, random_state=42)
+# X_train, X_test, y_train, y_test = train_test_split(train.drop(targets,axis=1), y[targets], test_size=0.30, random_state=42)
+X_train, X_test, y_train, y_test = train_test_split(train, y[targets], test_size=0.30, random_state=42)
 model = MultiOutputClassifier(make_pipeline(ColumnTransformer([('imputer',SimpleImputer(),features)],
                                                remainder='passthrough',
                                                verbose_feature_names_out=False).set_output(transform='pandas'),
@@ -108,8 +119,30 @@ model = MultiOutputClassifier(make_pipeline(ColumnTransformer([('imputer',Simple
                                             MinMaxScaler(),  
                                             PCA(1087),
                                             RidgeClassifier(alpha=100)))
-model.fit(train.drop(targets,axis=1), y.drop('participant_id',axis=1))
+
+#NEW STUFF BEGIN
+
+# # Define a grid of hyperparameters to search
+# param_grid = {
+#     'estimator__ridgeclassifier__alpha': [0.1, 1, 10, 100],  # Use '__' to access hyperparameters of nested models
+#     'estimator__ridgeclassifier__solver': ['auto', 'svd', 'cholesky', 'lsqr', 'saga'],
+# }
+
+# # Define the grid search with the pipeline and MultiOutputClassifier
+# grid_search = GridSearchCV(estimator=model, param_grid=param_grid, cv=5)
+
+# # Fit the grid search
+# grid_search.fit(X_train, y_train)
+
+# # Get the best parameters
+# print("Best parameters:", grid_search.best_params_)
+
+#NEW STUFF END 
+
+model.fit(train, y.drop('participant_id',axis=1))
+# model.fit(train.drop(targets,axis=1), y.drop('participant_id',axis=1))
 y_pred = model.predict(test)
 sub['ADHD_Outcome'] = y_pred[:,0]
 sub['Sex_F'] = y_pred[:,1]
-sub.to_csv(f'{RESULT_FOLDER}submission.csv',index=False)
+# sub.to_csv(f'{RESULT_FOLDER}submission.csv',index=False)
+sub.to_csv(f'{RESULT_FOLDER}results2.csv',index=False)
