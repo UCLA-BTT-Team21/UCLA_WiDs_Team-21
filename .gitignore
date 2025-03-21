@@ -2,3 +2,6 @@ __pycache__/
 venv/
 /data
 .DS_Store
+/img
+/results
+/.ipynb_checkpoints
