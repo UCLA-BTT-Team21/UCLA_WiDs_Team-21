@@ -84,8 +84,12 @@ Our exploratory data analysis revealed:
 * The dataset contains a balanced distribution of ADHD cases but an imbalance in sex distribution
 * Missing data patterns appeared in both categorical and quantitative features, particularly in parental information and clinical assessments
 * Several features showed significant skewness, requiring log transformation for optimal model performance
-* Principal Component Analysis showed that approximately 1100 components capture 95% of the variance in the data
-* UMAP visualization revealed some clustering patterns by both ADHD diagnosis and sex
+* Principal Component Analysis showed that approximately 1100 components capture 95% of the variance in the data![image](https://github.com/user-attachments/assets/2029c48c-237c-4d8b-9f18-d9bb1ef5fde0)
+
+* UMAP visualization revealed some clustering patterns by both ADHD diagnosis and sex ![image](https://github.com/user-attachments/assets/62ce403e-d7b2-42a6-9b08-c79a8ffd9a62)
+
+![image](https://github.com/user-attachments/assets/5acbc96e-5271-4f7e-91dc-764425ae08f3)
+![image](https://github.com/user-attachments/assets/26a3e679-7633-4ac5-9b36-6091b6fd1316)
 
 ### Preprocessing Approach
 
