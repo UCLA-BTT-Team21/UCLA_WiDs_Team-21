@@ -5,10 +5,11 @@
 ### **👥 Team Members**
 
 | Name | GitHub Handle | Contribution |
+| ----- | ----- | ----- |
 | Maya Patel | @2mayap | Lead EDA, null value prediction, random forest modeling, missing data handling |
 | Joann Sum | @joannsum | EDA, dataset distributions visualization, ensemble modeling |
 | Padma Iyengar | @padma-i | EDA, principal component analysis, dimensionality reduction |
-| Stephanie Wu | ----- | ----- |
+| Stephanie Wu |  |  |
 
 ---
 
@@ -33,7 +34,7 @@
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/wids-datathon-2025
+git clone https://github.com/2mayap/UCLA_WiDs_Team-21
 cd wids-datathon-2025
 ```
 
