@@ -9,13 +9,12 @@
 | Maya Patel | @2mayap | Lead EDA, null value prediction, random forest modeling, missing data handling |
 | Joann Sum | @joannsum | EDA, dataset distributions visualization, ensemble modeling |
 | Padma Iyengar | @padma-i | EDA, principal component analysis, dimensionality reduction |
-| Stephanie Wu |  |  |
 
 ---
 
 ## **🎯 Project Highlights**
 
-* Built a multi-output Ridge Classifier using PCA and preprocessing techniques to predict ADHD diagnosis and sex classification
+* Utilized a multi-output Ridge Classifier using PCA and preprocessing techniques to predict ADHD diagnosis and sex classification
 * Achieved improved F1 scores through strategic feature transformation and dimensionality reduction
 * Successfully identified important brain connectivity patterns associated with ADHD diagnosis
 * Deployed effective imputation strategies to handle missing values in clinical data
@@ -34,8 +33,7 @@
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/2mayap/UCLA_WiDs_Team-21
-cd wids-datathon-2025
+git clone [https://github.com/2mayap/UCLA_WiDs_Team-21](https://github.com/UCLA-BTT-Team21/UCLA_WiDs_Team-21.git)
 ```
 
 2. Install dependencies:
@@ -47,7 +45,9 @@ pip install -r requirements.txt
 * Download the competition datasets from the [WiDS Datathon 2025 Kaggle page](https://www.kaggle.com/competitions/widsdatathon2025/data)
 * Place all data files in a 'data/' directory within the project folder
 
-4. Run the baseline model:
+4. Run preprocessing-old-data.ipynb
+   * Doing so will save csv files containing predicted null values, which is needed to run the (edited) baseline.
+6. Run the baseline model:
 ```bash
 python baseline.py
 ```
@@ -135,6 +135,7 @@ Our best-performing model (from baseline.py) utilized:
 
 Our baseline Ridge Classifier outperformed more complex models, achieving:
 * Strong F1 scores for both ADHD prediction and sex classification
+* F1 Score: 0.7352941176470589
 * Reliable performance across validation splits
 * Good generalization to test data
 
