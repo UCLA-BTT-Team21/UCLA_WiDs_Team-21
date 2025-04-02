@@ -36,8 +36,8 @@ RESULT_FOLDER = 'results/'
 # train=get_feats(mode='TRAIN')
 # test=get_feats(mode='TEST')
 # NEW STUFF START
-train_file = 'data/train-edited2.csv'
-test_file = 'data/test-edited2.csv'
+train_file = 'data/train-edited.csv'
+test_file = 'data/test-edited.csv'
 
 # Load the train and test datasets using pandas
 train = pd.read_csv(train_file)
